@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Picture } from "@astrojs/image/components";
+
+type Props = CollectionEntry<"newsletter">;
+
+const props = Astro.props;
+const { data, slug } = props;
+---
+
+<a
+  href={slug}
+  class="overflow-hidden rounded border bg-slate-600 transition-all hover:shadow-xl"
+>
+  <Picture
+    src={data.imgSrc}
+    widths={[366]}
+    aspectRatio="16:9"
+    sizes="(max-width: 800px) 100vw, 366px"
+    alt="Image"
+    loading="eager"
+    class="aspect-video w-full"
+  />
+  <div class="p-4">
+    <h1 class="text-lg font-bold">
+      {data.competence}
+      {data.edition}
+    </h1>
+    <h2 class="capitalize">
+      {data.date}
+    </h2>
+  </div>
+</a>

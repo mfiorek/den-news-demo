@@ -1,0 +1,37 @@
+---
+import { Image } from "@astrojs/image/components";
+---
+
+<footer
+  class="mt-24 flex flex-wrap-reverse items-center justify-between gap-12 bg-white p-8 text-slate-800"
+>
+  <Image
+    src="./images/sc-logo.jpg"
+    width={209.6}
+    height={66.8}
+    alt="Sollers Consulting logo"
+    loading="eager"
+    class="mx-auto aspect-auto"
+  />
+  <div class="mx-auto flex flex-col items-center">
+    <p class="retro-mono-font flex flex-col text-lg text-lime-700">
+      Developers' Newsletter
+    </p>
+    <p class="text-center text-sm">
+      Your monthly information about news and learning materials for:
+    </p>
+    <div class="flex gap-4 text-sm">
+      <b>Java</b>
+      <b>.Net</b>
+      <b>Frontends</b>
+      <p>...and more!</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+  .retro-mono-font {
+    font-family: "Press Start 2P", cursive;
+  }
+</style>

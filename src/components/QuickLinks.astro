@@ -1,0 +1,59 @@
+---
+import NavbarLink from "./NavbarLink.astro";
+
+export interface Props {
+  monthSlug: string;
+  edition: string;
+  date: string;
+}
+
+const { monthSlug, edition, date } = Astro.props;
+---
+
+<div class="desktop sticky top-0">
+  <div class="quick-links flex flex-col gap-4 px-8 py-4 text-xl">
+    <p class="text-center text-2xl font-bold">Quick links</p>
+    <hr />
+    <div class="flex flex-col gap-2">
+      <NavbarLink href="/" text="Home" />
+      <NavbarLink href="/archive" text="Archive" customClass="pl-8" />
+    </div>
+    <hr />
+    <div class="flex flex-col gap-2 font-bold">
+      <NavbarLink href={`/${monthSlug}`} text={`DevNews${edition} ${date}`} />
+      <NavbarLink href={`/${monthSlug}/java`} text="Java" customClass="pl-8" />
+      <NavbarLink
+        href={`/${monthSlug}/dotnet`}
+        text=".Net"
+        customClass="pl-8"
+      />
+      <NavbarLink
+        href={`/${monthSlug}/frontend`}
+        text="Frontend"
+        customClass="pl-8"
+      />
+    </div>
+    <hr />
+  </div>
+</div>
+
+<style lang="scss">
+  .quick-links {
+    hr {
+      border: none;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      height: 1px;
+    }
+  }
+
+  @container (max-width: 1200px) {
+    .desktop {
+      display: none;
+    }
+  }
+</style>
