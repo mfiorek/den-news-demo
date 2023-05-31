@@ -1,7 +1,8 @@
 ---
 competence: The Developers' Newsletter
-edition: "#3"
-date: April 2023
+edition: 1
+date: February 2023
+order: 1
 draft: false
 imgSrc: "./images/april-2023/home.jpg"
 ---

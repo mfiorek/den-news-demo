@@ -1,7 +1,8 @@
 ---
 competence: Frontend
-edition: "#3"
+edition: 3
 date: April 2023
+order: 4
 draft: false
 imgSrc: "./images/april-2023/fe.jpg"
 ---
