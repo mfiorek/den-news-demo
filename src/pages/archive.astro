@@ -9,11 +9,14 @@ const newsletterEntries = await getCollection(
   "newsletter",
   ({ data, id }) => data.draft === false && id.includes("index")
 );
+const sortedNewsletterEntries = newsletterEntries.sort(
+  (a, b) => b.data.edition - a.data.edition
+);
 ---
 
 <BaseHtml title="Sollers Developers Newsletter">
   <Navbar />
-  <div class="canvas mx-auto flex grow flex-col gap-8 bg-slate-700">
+  <div class="canvas mx-auto flex grow flex-col gap-8 bg-zinc-700">
     <div class="px-8 pt-8">
       <h1 class="text-4xl font-semibold">Archive</h1>
       <h2 class="text-2xl font-semibold">
@@ -23,7 +26,7 @@ const newsletterEntries = await getCollection(
     <div class="grow px-8">
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {
-          newsletterEntries.map((monthNewsletter) => (
+          sortedNewsletterEntries.map((monthNewsletter) => (
             <Card {...monthNewsletter} />
           ))
         }

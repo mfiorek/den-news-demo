@@ -1,0 +1,59 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<main class="container-context flex flex-col items-center bg-zinc-800">
+  <div class="canvas flex grow flex-col bg-zinc-700 shadow-2xl">
+    <Header />
+    <slot />
+    <Footer />
+  </div>
+</main>
+
+<style lang="scss" is:global>
+  .container-context {
+    container-type: inline-size;
+  }
+
+  .canvas {
+    width: 800px;
+  }
+  @container (max-width: 800px) {
+    .canvas {
+      width: 100%;
+    }
+  }
+
+  //   .halftone::after {
+  //     --dotSize: 0.15rem;
+  //     --dotBlur: 0.25rem;
+  //     --stop1: 3%;
+  //     --stop2: 60%;
+  //     --bgSize: 0.75rem;
+
+  //     z-index: -30;
+  //     content: "";
+  //     position: absolute;
+  //     inset: 0;
+
+  //     background-image: radial-gradient(
+  //         circle at center,
+  //         #444 var(--dotSize),
+  //         transparent var(--dotBlur)
+  //       ),
+  //       radial-gradient(
+  //         circle at center,
+  //         #444 var(--dotSize),
+  //         transparent var(--dotBlur)
+  //       );
+  //     background-size: var(--bgSize) var(--bgSize);
+  //     background-position: 0 0, calc(var(--bgSize) / 2) calc(var(--bgSize) / 2);
+  //     mask-image: linear-gradient(
+  //       90deg,
+  //       rgb(0 0 0 / 0),
+  //       rgb(0 0 0),
+  //       rgb(0 0 0 / 0)
+  //     );
+  //   }
+</style>

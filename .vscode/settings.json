@@ -4,5 +4,8 @@
     "workbench.colorCustomizations": {
         "gitDecoration.modifiedResourceForeground": "#00d0ff",
         "tree.indentGuidesStroke": "#ddd"
+    },
+    "files.associations": {
+        "*.mdx": "markdown"
     }
 }

@@ -1,0 +1,124 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Picture } from "@astrojs/image/components";
+
+type Props = CollectionEntry<"newsletter">;
+
+const props = Astro.props;
+const { data } = props;
+---
+
+<article id={data.competence}>
+  <Picture
+    id={data.competence}
+    src={data.imgSrc}
+    widths={[200, 400, 800]}
+    aspectRatio="16:9"
+    sizes="(max-width: 800px) 100vw, 800px"
+    alt="Image"
+    loading="eager"
+    class="aspect-video w-full"
+  />
+  <div class="sticky top-0 border-b bg-zinc-700 px-8 py-6">
+    <a href={`#${data.competence}`} class="text-4xl font-semibold capitalize">
+      {data.competence}
+      #{data.edition}
+    </a>
+    <h2 class="text-2xl capitalize">
+      {data.date}
+    </h2>
+  </div>
+  <section id="markdown" class="markdown grow px-8 pb-24">
+    <slot />
+  </section>
+</article>
+
+<style lang="scss" is:global>
+  .markdown {
+    h1 {
+      font-size: 2rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    h3,
+    h4 {
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    p {
+      text-align: justify;
+      height: max-content;
+    }
+    p + p {
+      margin-top: 1rem;
+    }
+
+    blockquote {
+      @apply rounded border border-zinc-800 bg-zinc-600 px-4 py-2 shadow-xl transition-all;
+
+      *:first-child {
+        margin-top: 0;
+      }
+    }
+    blockquote + blockquote {
+      margin-top: 1rem;
+    }
+
+    a:link {
+      color: (internal value);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    a:visited {
+      color: (internal value);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    a:link:active {
+      color: (internal value);
+    }
+    a:visited:active {
+      color: (internal value);
+    }
+
+    ul {
+      list-style: disc;
+      list-style-position: inside;
+      margin: 0;
+      padding: 0;
+      padding-left: 2rem;
+    }
+
+    ol,
+    menu {
+      list-style: decimal;
+      list-style-position: inside;
+      margin: 0;
+      padding: 0;
+    }
+
+    pre {
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0.5rem;
+    }
+
+    code:not(pre code) {
+      background-color: #0d1117;
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+    }
+  }
+</style>

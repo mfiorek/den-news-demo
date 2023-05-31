@@ -1,6 +1,8 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
-import NewsletterLayout from "../layouts/Newsletter.astro";
+import { getCollection } from "astro:content";
+import BaseHtml from "../layouts/BaseHtml.astro";
+import NewsletterLayout from "../layouts/NewsletterLayout.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
 
 export async function getStaticPaths() {
   const newsletterEntries = await getCollection(
@@ -8,18 +10,38 @@ export async function getStaticPaths() {
     ({ data }) => data.draft === false
   );
 
-  return newsletterEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: entry,
-  }));
+  return newsletterEntries.map((entry) => {
+    const shortSlug = entry.slug.slice(0, entry.slug.lastIndexOf("/"));
+
+    return {
+      params: { slug: shortSlug },
+      props: { slug: shortSlug, data: entry.data },
+    };
+  });
 }
 
-type Props = CollectionEntry<"newsletter">;
-
-const entry = Astro.props;
-const { Content } = await entry.render();
+const props = Astro.props;
+const newsletterSections = await getCollection("newsletter", ({ slug }) =>
+  slug.startsWith(props.slug)
+);
+const sortedSections = newsletterSections.sort(
+  (a, b) => a.data.order - b.data.order
+);
 ---
 
-<NewsletterLayout {...entry}>
-  <Content />
-</NewsletterLayout>
+<BaseHtml
+  title={`Developers Newsletter #${props.data.edition} (${props.data.date})`}
+>
+  <NewsletterLayout>
+    {
+      sortedSections.map(async (section) => {
+        const { Content } = await section.render();
+        return (
+          <SectionLayout {...section}>
+            <Content />
+          </SectionLayout>
+        );
+      })
+    }
+  </NewsletterLayout>
+</BaseHtml>
