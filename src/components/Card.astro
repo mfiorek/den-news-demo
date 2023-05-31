@@ -9,7 +9,7 @@ const { data, slug } = props;
 ---
 
 <a
-  href={slug}
+  href={slug.slice(0, slug.lastIndexOf("/"))}
   class="overflow-hidden rounded border bg-zinc-600 transition-all hover:shadow-xl"
 >
   <Picture

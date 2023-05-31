@@ -1,21 +1,19 @@
 ---
 import { getCollection } from "astro:content";
 import BaseHtml from "../layouts/BaseHtml.astro";
-import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Card from "../components/Card.astro";
 
-const newsletterEntries = await getCollection(
+const startSections = await getCollection(
   "newsletter",
-  ({ data, id }) => data.draft === false && id.includes("index")
+  ({ data, slug }) => data.draft === false && slug.endsWith("start")
 );
-const sortedNewsletterEntries = newsletterEntries.sort(
+const sortedStartSections = startSections.sort(
   (a, b) => b.data.edition - a.data.edition
 );
 ---
 
 <BaseHtml title="Sollers Developers Newsletter">
-  <Navbar />
   <div class="canvas mx-auto flex grow flex-col gap-8 bg-zinc-700">
     <div class="px-8 pt-8">
       <h1 class="text-4xl font-semibold">Archive</h1>
@@ -26,7 +24,7 @@ const sortedNewsletterEntries = newsletterEntries.sort(
     <div class="grow px-8">
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {
-          sortedNewsletterEntries.map((monthNewsletter) => (
+          sortedStartSections.map((monthNewsletter) => (
             <Card {...monthNewsletter} />
           ))
         }
