@@ -4,7 +4,7 @@ edition: 2
 date: March 2023
 order: 6
 draft: false
-imgSrc: "./images/april-2023/java.jpg"
+imgSrc: "/images/april-2023/java.jpg"
 ---
 
 ## We'd like to show you some events you can attend to grow as Developer! And maybe to use your Sollers Training budget!

@@ -4,7 +4,7 @@ edition: 3
 date: April 2023
 order: 5
 draft: false
-imgSrc: "./images/april-2023/self-development.jpg"
+imgSrc: "/images/april-2023/self-development.jpg"
 ---
 
 # Soft skills & Self management

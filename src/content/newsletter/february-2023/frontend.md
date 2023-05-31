@@ -4,7 +4,7 @@ edition: 1
 date: February 2023
 order: 4
 draft: false
-imgSrc: "./images/april-2023/java.jpg"
+imgSrc: "/images/april-2023/java.jpg"
 ---
 
 # #news

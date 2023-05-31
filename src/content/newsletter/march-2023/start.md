@@ -4,7 +4,7 @@ edition: 2
 date: March 2023
 order: 1
 draft: false
-imgSrc: "./images/april-2023/start.jpg"
+imgSrc: "/images/april-2023/start.jpg"
 ---
 
 # Spring is already here!
