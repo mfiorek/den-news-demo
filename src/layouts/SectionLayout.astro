@@ -19,7 +19,9 @@ const { data } = props;
     loading="eager"
     class="aspect-video w-full"
   />
-  <div class="sticky top-0 border-b bg-zinc-700 px-8 py-6">
+  <div
+    class="sticky top-0 border-b bg-white bg-opacity-20 px-8 py-6 backdrop-blur-md"
+  >
     <a href={`#${data.competence}`} class="text-4xl font-semibold capitalize">
       {data.competence}
       #{data.edition}
